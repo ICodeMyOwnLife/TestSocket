@@ -12,6 +12,9 @@ namespace SocketInfrastructure
         public static int GetBufferSize()
             => int.Parse(ConfigurationManager.AppSettings["bufferSize"]);
 
+        public static string GetEof()
+            => ConfigurationManager.AppSettings["eof"];
+
         public static string GetIpAddress()
             => ConfigurationManager.AppSettings["ipAddress"];
 

@@ -6,9 +6,6 @@
         xmlns:vmd="clr-namespace:SocketServer;assembly=SocketServer"
         mc:Ignorable="d"
         Title="Server" Height="350" Width="525">
-    <Window.DataContext>
-        <vmd:ServerViewModel />
-    </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,14 +18,12 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="0" Content="Start Listening"
-                Command="{Binding StartListeningAsyncCommand}" />
+        <Button x:Name="cmdStartListening" Grid.Row="0" Grid.Column="0" Content="Start Listening"
+                Click="CmdStartListening_OnClick"/>
 
-        <Button Grid.Row="0" Grid.Column="1" Content="Stop Listening"
-                Command="{Binding StopListeningCommand}" />
+        <Button x:Name="cmdStopListening" Grid.Row="0" Grid.Column="1" Content="Stop Listening" />
 
-        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                 Text="{Binding Message, Mode=OneWay}" IsReadOnly="True"
-                 VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="txtMessage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                 IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
     </Grid>
 </Window>

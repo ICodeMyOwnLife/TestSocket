@@ -53,18 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Libraries\DotNet\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
-      <Project>{33A5DF99-1312-4023-A6EF-EABB9848F5A6}</Project>
-      <Name>CB.Model.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Libraries\DotNet\CB.Model\CB.Model.Prism\CB.Model.Prism.csproj">
-      <Project>{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}</Project>
-      <Name>CB.Model.Prism</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Libraries\DotNet\CB.Net\CB.Net.Socket\CB.Net.Socket.csproj">
-      <Project>{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}</Project>
-      <Name>CB.Net.Socket</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SocketInfrastructure\SocketInfrastructure.csproj">
       <Project>{3692172A-8204-409B-968C-BCAB77112204}</Project>
       <Name>SocketInfrastructure</Name>

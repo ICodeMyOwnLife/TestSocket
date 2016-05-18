@@ -1,23 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketServer", "SocketServer\SocketServer.csproj", "{2C0F79E7-9E2E-4560-A019-BDB5BBD60E63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketInfrastructure", "SocketInfrastructure\SocketInfrastructure.csproj", "{3692172A-8204-409B-968C-BCAB77112204}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Net.Socket", "..\..\Libraries\DotNet\CB.Net\CB.Net.Socket\CB.Net.Socket.csproj", "{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Common", "..\..\Libraries\DotNet\CB.Model\CB.Model.Common\CB.Model.Common.csproj", "{33A5DF99-1312-4023-A6EF-EABB9848F5A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Prism", "..\..\Libraries\DotNet\CB.Model\CB.Model.Prism\CB.Model.Prism.csproj", "{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketClient", "SocketClient\SocketClient.csproj", "{82791664-C462-4A49-8DB9-6577A36A8A14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketServerWindow", "SocketServerWindow\SocketServerWindow.csproj", "{19850D12-22EC-4465-A29A-0B3181078D6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketClientWindow", "SocketClientWindow\SocketClientWindow.csproj", "{5354D5C1-2BD0-4561-8188-F71A120ABCDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Common", "..\..\..\Libraries\DotNet\CB.Model\CB.Model.Common\CB.Model.Common.csproj", "{33A5DF99-1312-4023-A6EF-EABB9848F5A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Prism", "..\..\..\Libraries\DotNet\CB.Model\CB.Model.Prism\CB.Model.Prism.csproj", "{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Net.Socket", "..\..\..\Libraries\DotNet\CB.Net\CB.Net.Socket\CB.Net.Socket.csproj", "{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,18 +33,6 @@ Global
 		{3692172A-8204-409B-968C-BCAB77112204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3692172A-8204-409B-968C-BCAB77112204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3692172A-8204-409B-968C-BCAB77112204}.Release|Any CPU.Build.0 = Release|Any CPU
-		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82791664-C462-4A49-8DB9-6577A36A8A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82791664-C462-4A49-8DB9-6577A36A8A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82791664-C462-4A49-8DB9-6577A36A8A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +45,18 @@ Global
 		{5354D5C1-2BD0-4561-8188-F71A120ABCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5354D5C1-2BD0-4561-8188-F71A120ABCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5354D5C1-2BD0-4561-8188-F71A120ABCDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
