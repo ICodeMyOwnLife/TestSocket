@@ -14,7 +14,6 @@ namespace TcpListenerWindow
     {
         #region Fields
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private string _fileName;
         private string _message;
         private readonly TcpSocketServer _tcpSocketServer = new TcpSocketServer();
         #endregion
@@ -23,23 +22,19 @@ namespace TcpListenerWindow
         #region  Constructors & Destructor
         public TcpListenerViewModel()
         {
+            CancelCommand = new DelegateCommand(Cancel);
             ConnectCommand = new DelegateCommand(_tcpSocketServer.Connect);
             DisconnectCommand = new DelegateCommand(_tcpSocketServer.Disconnect);
-            ReceiveTextAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveTextAsync);
             ReceiveFileAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveFileAsync);
+            ReceiveTextAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveTextAsync);
         }
         #endregion
 
 
         #region  Properties & Indexers
+        public ICommand CancelCommand { get; }
         public ICommand ConnectCommand { get; }
         public ICommand DisconnectCommand { get; }
-
-        public string FileName
-        {
-            get { return _fileName; }
-            set { SetProperty(ref _fileName, value); }
-        }
 
         public string Message
         {
@@ -47,14 +42,16 @@ namespace TcpListenerWindow
             private set { SetProperty(ref _message, value); }
         }
 
-        public ProgressReporter<double> ProgressReporter { get; } = new ProgressReporter<double>();
-
+        public FileProgressReporter ProgressReporter { get; } = new FileProgressReporter();
         public ICommand ReceiveFileAsyncCommand { get; }
         public ICommand ReceiveTextAsyncCommand { get; }
         #endregion
 
 
         #region Methods
+        public void Cancel()
+            => _cancellationTokenSource.Cancel();
+
         public async Task ReceiveFileAsync()
         {
             await _tcpSocketServer.ReceiveFileAsync(fileName =>

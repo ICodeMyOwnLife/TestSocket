@@ -21,16 +21,18 @@ namespace TcpClientWindow
         #region  Constructors & Destructor
         public TcpClientViewModel()
         {
-            SendTextAsyncCommand = DelegateCommand.FromAsyncHandler(
-                () => _tcpSocketClient.SendTextAsync(Text, _cancellationTokenSource.Token));
+            CancelCommand = new DelegateCommand(Cancel);
+            DropCommand = new DelegateCommand<IDataObject>(Drop);
             SendFileAsyncCommand = DelegateCommand.FromAsyncHandler(
                 () => _tcpSocketClient.SendFileAsync(FileName, _cancellationTokenSource.Token));
-            DropCommand = new DelegateCommand<IDataObject>(Drop);
+            SendTextAsyncCommand = DelegateCommand.FromAsyncHandler(
+                () => _tcpSocketClient.SendTextAsync(Text, _cancellationTokenSource.Token));
         }
         #endregion
 
 
         #region  Properties & Indexers
+        public ICommand CancelCommand { get; }
         public ICommand DropCommand { get; }
 
         public string FileName
@@ -51,6 +53,9 @@ namespace TcpClientWindow
 
 
         #region Methods
+        public void Cancel()
+            => _cancellationTokenSource.Cancel();
+
         public void Drop(IDataObject data)
         {
             var filesDrop = data.GetData(DataFormats.FileDrop, true) as string[];
@@ -59,3 +64,6 @@ namespace TcpClientWindow
         #endregion
     }
 }
+
+
+// TODO: Fix Cancel()

@@ -24,6 +24,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -42,5 +43,8 @@
 
         <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AllowDrop="True"
                  Text="{Binding FileName}" />
+
+        <Button Grid.Row="3" Grid.Column="1" Content="Cancel"
+                Command="{Binding CancelCommand}" />
     </Grid>
 </Window>
