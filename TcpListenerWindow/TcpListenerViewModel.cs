@@ -1,12 +1,11 @@
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CB.Model.Common;
 using CB.Model.Prism;
+using CB.Net.Socket;
 using Microsoft.Practices.Prism.Commands;
+using Microsoft.Win32;
 
 
 namespace TcpListenerWindow
@@ -14,21 +13,20 @@ namespace TcpListenerWindow
     public class TcpListenerViewModel: PrismViewModelBase
     {
         #region Fields
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private string _fileName;
         private string _message;
-        private readonly TcpSocketServer _tcpSocketServer;
+        private readonly TcpSocketServer _tcpSocketServer = new TcpSocketServer();
         #endregion
 
 
         #region  Constructors & Destructor
         public TcpListenerViewModel()
         {
-            _tcpSocketServer = new TcpSocketServer(this);
             ConnectCommand = new DelegateCommand(_tcpSocketServer.Connect);
             DisconnectCommand = new DelegateCommand(_tcpSocketServer.Disconnect);
-            StartReceiveMessageAsyncCommand = DelegateCommand.FromAsyncHandler(_tcpSocketServer.StartReceiveMessageAsync);
-            StopListeningCommand = new DelegateCommand(_tcpSocketServer.StopListening);
-            ReceiveFileAsyncCommand = DelegateCommand.FromAsyncHandler(_tcpSocketServer.ReceiveFileAsync);
+            ReceiveTextAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveTextAsync);
+            ReceiveFileAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveFileAsync);
         }
         #endregion
 
@@ -49,12 +47,30 @@ namespace TcpListenerWindow
             private set { SetProperty(ref _message, value); }
         }
 
-        public ICommand ReceiveFileAsyncCommand { get; }
-        public ICommand StartReceiveMessageAsyncCommand { get; }
-        public ICommand StopListeningCommand { get; }
-        #endregion
-        
+        public ProgressReporter<double> ProgressReporter { get; } = new ProgressReporter<double>();
 
-        // TODO: ipAddress, port
+        public ICommand ReceiveFileAsyncCommand { get; }
+        public ICommand ReceiveTextAsyncCommand { get; }
+        #endregion
+
+
+        #region Methods
+        public async Task ReceiveFileAsync()
+        {
+            await _tcpSocketServer.ReceiveFileAsync(fileName =>
+            {
+                var saveFileDialog = new SaveFileDialog
+                {
+                    FileName = fileName
+                };
+                return saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : null;
+            }, _cancellationTokenSource.Token, ProgressReporter);
+        }
+
+        public async Task ReceiveTextAsync()
+        {
+            Message = await _tcpSocketServer.ReceiveTextAsync(_cancellationTokenSource.Token);
+        }
+        #endregion
     }
 }

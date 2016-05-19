@@ -61,7 +61,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="TcpListenerViewModel.cs" />
-    <Compile Include="TcpSocketServer.cs" />
     <Page Include="TcpListenerMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +109,10 @@
     <ProjectReference Include="..\..\..\..\Libraries\DotNet\CB.Model\CB.Model.Prism\CB.Model.Prism.csproj">
       <Project>{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}</Project>
       <Name>CB.Model.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Libraries\DotNet\CB.Net\CB.Net.Socket\CB.Net.Socket.csproj">
+      <Project>{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}</Project>
+      <Name>CB.Net.Socket</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
