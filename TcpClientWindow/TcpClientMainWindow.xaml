@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -23,9 +24,15 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                 Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" />
+                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
 
-        <Button Grid.Row="1" Grid.Column="1" Content="Send Message"
-                Command="{Binding SendMessageAsyncCommand}" />
+        <Button Grid.Row="1" Grid.Column="0" Content="Send Text"
+                Command="{Binding SendTextAsyncCommand}" />
+
+        <Button Grid.Row="1" Grid.Column="1" Content="Send File"
+                Command="{Binding SendFileAsyncCommand}" />
+
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                 Text="{Binding FileName}" />
     </Grid>
 </Window>

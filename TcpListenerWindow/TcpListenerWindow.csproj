@@ -61,6 +61,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="TcpListenerViewModel.cs" />
+    <Compile Include="TcpSocketServer.cs" />
     <Page Include="TcpListenerMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

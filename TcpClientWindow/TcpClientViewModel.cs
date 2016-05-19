@@ -1,8 +1,4 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using CB.Model.Prism;
 using Microsoft.Practices.Prism.Commands;
 
@@ -12,43 +8,39 @@ namespace TcpClientWindow
     public class TcpClientViewModel: PrismViewModelBase
     {
         #region Fields
-        private string _message;
+        private string _fileName;
+
+        private readonly TcpSocketClient _tcpSocketClient = new TcpSocketClient("127.0.0.1", 11000);
+
+                                          // TODO: ipAddress, port
+
+        private string _text;
         #endregion
 
 
         #region  Constructors & Destructor
         public TcpClientViewModel()
         {
-            SendMessageAsyncCommand = DelegateCommand.FromAsyncHandler(SendMessageAsync);
+            SendTextAsyncCommand = DelegateCommand.FromAsyncHandler(() => _tcpSocketClient.SendTextAsync(Text));
+            SendFileAsyncCommand = DelegateCommand.FromAsyncHandler(() => _tcpSocketClient.SendFileAsync(FileName));
         }
         #endregion
 
 
         #region  Properties & Indexers
-        public string Message
+        public string FileName
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
+            get { return _fileName; }
+            set { SetProperty(ref _fileName, value); }
         }
 
-        public ICommand SendMessageAsyncCommand { get; }
-        #endregion
+        public ICommand SendFileAsyncCommand { get; }
+        public ICommand SendTextAsyncCommand { get; }
 
-
-        #region Methods
-        public async Task SendMessageAsync()
+        public string Text
         {
-            var data = Encoding.Unicode.GetBytes(Message);
-
-            using (var tcpClient = new TcpClient(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000)))
-
-                // TODO: ipAddress, port
-            {
-                using (var netStream = tcpClient.GetStream())
-                {
-                    await netStream.WriteAsync(data, 0, data.Length);
-                }
-            }
+            get { return _text; }
+            set { SetProperty(ref _text, value); }
         }
         #endregion
     }
