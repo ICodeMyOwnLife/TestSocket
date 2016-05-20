@@ -58,7 +58,7 @@
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Elapsed time:" />
 
         <TextBlock Grid.Row="5" Grid.Column="1"
-                 Text="{Binding ProgressReporter.ElapsedTime, StringFormat={}{0:hh\\:mm\\:ss}}" />
+                 Text="{Binding ProgressReporter.ElapsedTime, StringFormat={}{0:hh\\:mm\\:ss\\.fff}}" />
 
         <TextBlock Grid.Row="5" Grid.Column="2" Text="Remaining time:" />
 

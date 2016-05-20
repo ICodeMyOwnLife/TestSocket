@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -58,9 +59,11 @@ namespace TcpListenerWindow
 
         public async Task ReceiveFileAsync()
         {
-            var elapsedTime =
-                await _tcpSocketServer.ReceiveFileAsync(GetSavePath);
-            MessageBox.Show(elapsedTime.ToString("c"));
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            await _tcpSocketServer.ReceiveFileAsync(GetSavePath);
+            MessageBox.Show(stopwatch.Elapsed.ToString("c"));
+            stopwatch.Stop();
         }
 
         public async Task ReceiveFileWithProgressAsync()
