@@ -13,7 +13,7 @@ namespace TcpClientWindow
         #region Fields
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private string _fileName;
-        private readonly TcpSocketClient _tcpSocketClient = new TcpSocketClient(); // TODO: ipAddress, port
+        private readonly TcpSocketClient _tcpSocketClient = new TcpSocketClient(new TcpSocketConfiguration());
         private string _text;
         #endregion
 

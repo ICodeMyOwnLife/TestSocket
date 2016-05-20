@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CB.Model.Common;
 using CB.Model.Prism;
@@ -15,7 +16,7 @@ namespace TcpListenerWindow
         #region Fields
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private string _message;
-        private readonly TcpSocketServer _tcpSocketServer = new TcpSocketServer();
+        private readonly TcpSocketServer _tcpSocketServer = new TcpSocketServer(new TcpSocketConfiguration());
         #endregion
 
 
@@ -26,6 +27,7 @@ namespace TcpListenerWindow
             ConnectCommand = new DelegateCommand(_tcpSocketServer.Connect);
             DisconnectCommand = new DelegateCommand(_tcpSocketServer.Disconnect);
             ReceiveFileAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveFileAsync);
+            ReceiveFileWithProgressAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveFileWithProgressAsync);
             ReceiveTextAsyncCommand = DelegateCommand.FromAsyncHandler(ReceiveTextAsync);
         }
         #endregion
@@ -43,7 +45,9 @@ namespace TcpListenerWindow
         }
 
         public FileProgressReporter ProgressReporter { get; } = new FileProgressReporter();
+
         public ICommand ReceiveFileAsyncCommand { get; }
+        public ICommand ReceiveFileWithProgressAsyncCommand { get; }
         public ICommand ReceiveTextAsyncCommand { get; }
         #endregion
 
@@ -54,19 +58,27 @@ namespace TcpListenerWindow
 
         public async Task ReceiveFileAsync()
         {
-            await _tcpSocketServer.ReceiveFileAsync(fileName =>
-            {
-                var saveFileDialog = new SaveFileDialog
-                {
-                    FileName = fileName
-                };
-                return saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : null;
-            }, _cancellationTokenSource.Token, ProgressReporter);
+            var elapsedTime =
+                await _tcpSocketServer.ReceiveFileAsync(GetSavePath);
+            MessageBox.Show(elapsedTime.ToString("c"));
         }
 
+        public async Task ReceiveFileWithProgressAsync()
+            => await _tcpSocketServer.ReceiveFileAsync(GetSavePath, _cancellationTokenSource.Token, ProgressReporter);
+
         public async Task ReceiveTextAsync()
+            => Message = await _tcpSocketServer.ReceiveTextAsync(_cancellationTokenSource.Token);
+        #endregion
+
+
+        #region Implementation
+        private string GetSavePath(string fileName)
         {
-            Message = await _tcpSocketServer.ReceiveTextAsync(_cancellationTokenSource.Token);
+            var saveFileDialog = new SaveFileDialog
+            {
+                FileName = fileName
+            };
+            return saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : null;
         }
         #endregion
     }

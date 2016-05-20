@@ -100,14 +100,6 @@
       <Project>{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}</Project>
       <Name>CB.Net.Socket</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SocketInfrastructure\SocketInfrastructure.csproj">
-      <Project>{3692172a-8204-409b-968c-bcab77112204}</Project>
-      <Name>SocketInfrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocketServer\SocketServer.csproj">
-      <Project>{2c0f79e7-9e2e-4560-a019-bdb5bbd60e63}</Project>
-      <Name>SocketServer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

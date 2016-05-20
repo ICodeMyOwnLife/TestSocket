@@ -96,10 +96,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SocketClient\SocketClient.csproj">
-      <Project>{82791664-c462-4a49-8db9-6577a36a8a14}</Project>
-      <Name>SocketClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SocketInfrastructure\SocketInfrastructure.csproj">
       <Project>{3692172a-8204-409b-968c-bcab77112204}</Project>
       <Name>SocketInfrastructure</Name>

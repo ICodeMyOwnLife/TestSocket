@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -37,38 +38,41 @@
         <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Receive Text"
                 Command="{Binding ReceiveTextAsyncCommand}" />
 
-        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Receive File"
+        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Receive File With Progress"
+                Command="{Binding ReceiveFileWithProgressAsyncCommand}" />
+
+        <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="Receive File"
                 Command="{Binding ReceiveFileAsyncCommand}" />
 
-        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
                  Text="{Binding Message, Mode=OneWay}" />
 
-        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+        <ProgressBar Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
                      Height="16" Minimum="0" Maximum="1"
                      Value="{Binding ProgressReporter.Progress}" />
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
                    Text="{Binding ProgressReporter.Progress, StringFormat=p}"
                    HorizontalAlignment="Center" />
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Elapsed time:" />
-
-        <TextBlock Grid.Row="4" Grid.Column="1"
-                 Text="{Binding ProgressReporter.ElapsedTime, StringFormat={}{0:hh\\:mm\\:ss}}" />
-
-        <TextBlock Grid.Row="4" Grid.Column="2" Text="Remaining time:" />
-
-        <TextBlock Grid.Row="4" Grid.Column="3"
-                 Text="{Binding ProgressReporter.RemainingTime, StringFormat={}{0:hh\\:mm\\:ss}}" />
-
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Speed:" />
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Elapsed time:" />
 
         <TextBlock Grid.Row="5" Grid.Column="1"
+                 Text="{Binding ProgressReporter.ElapsedTime, StringFormat={}{0:hh\\:mm\\:ss}}" />
+
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="Remaining time:" />
+
+        <TextBlock Grid.Row="5" Grid.Column="3"
+                 Text="{Binding ProgressReporter.RemainingTime, StringFormat={}{0:hh\\:mm\\:ss}}" />
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Speed:" />
+
+        <TextBlock Grid.Row="6" Grid.Column="1"
                  Text="{Binding ProgressReporter.Speed, StringFormat=N2}" />
 
-        <TextBlock Grid.Row="5" Grid.Column="2" Text="MB/s" />
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="MB/s" />
 
-        <Button Grid.Row="5" Grid.Column="3" Content="Cancel"
+        <Button Grid.Row="6" Grid.Column="3" Content="Cancel"
                 Command="{Binding CancelCommand}" />
     </Grid>
 </Window>
