@@ -68,11 +68,9 @@
         <TextBlock Grid.Row="6" Grid.Column="0" Text="Speed:" />
 
         <TextBlock Grid.Row="6" Grid.Column="1"
-                 Text="{Binding ProgressReporter.Speed, StringFormat=N2}" />
+                 Text="{Binding ProgressReporter.Rate}" />
 
-        <TextBlock Grid.Row="6" Grid.Column="2" Text="MB/s" />
-
-        <Button Grid.Row="6" Grid.Column="3" Content="Cancel"
+        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Content="Cancel"
                 Command="{Binding CancelCommand}" />
     </Grid>
 </Window>

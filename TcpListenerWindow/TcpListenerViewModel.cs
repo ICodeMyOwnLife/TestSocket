@@ -67,7 +67,11 @@ namespace TcpListenerWindow
         }
 
         public async Task ReceiveFileWithProgressAsync()
-            => await _tcpSocketServer.ReceiveFileAsync(GetSavePath, _cancellationTokenSource.Token, ProgressReporter);
+            => await _tcpSocketServer.ReceiveFileAsync(fileInfo =>
+            {
+                ProgressReporter.FileSize = fileInfo.FileSize;
+                return GetSavePath(fileInfo);
+            }, _cancellationTokenSource.Token, ProgressReporter);
 
         public async Task ReceiveTextAsync()
             => Message = await _tcpSocketServer.ReceiveTextAsync(_cancellationTokenSource.Token);
@@ -75,11 +79,11 @@ namespace TcpListenerWindow
 
 
         #region Implementation
-        private string GetSavePath(string fileName)
+        private static string GetSavePath(IFileInfo fileInfo)
         {
             var saveFileDialog = new SaveFileDialog
             {
-                FileName = fileName
+                FileName = fileInfo.FileName
             };
             return saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : null;
         }
