@@ -6,6 +6,7 @@ using System.Windows.Input;
 using CB.Model.Common;
 using CB.Model.Prism;
 using CB.Net.Socket;
+using CB.Wpf.UserControls;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Win32;
 
@@ -67,11 +68,21 @@ namespace TcpListenerWindow
         }
 
         public async Task ReceiveFileWithProgressAsync()
-            => await _tcpSocketServer.ReceiveFileAsync(fileInfo =>
+        {
+            var fileProgressReporter = new FileProgressReporter();
+            await _tcpSocketServer.ReceiveFileAsync(fileInfo =>
             {
-                ProgressReporter.FileSize = fileInfo.FileSize;
+                fileProgressReporter.FileName = fileInfo.FileName;
+                fileProgressReporter.FileSize = fileInfo.FileSize;
+
+                var progressReporterViewModel = new FileTransferProgressViewModel
+                {
+                    ProgressReporter = fileProgressReporter
+                };
+
                 return GetSavePath(fileInfo);
-            }, _cancellationTokenSource.Token, ProgressReporter);
+            }, _cancellationTokenSource.Token, fileProgressReporter);
+        }
 
         public async Task ReceiveTextAsync()
             => Message = await _tcpSocketServer.ReceiveTextAsync(_cancellationTokenSource.Token);

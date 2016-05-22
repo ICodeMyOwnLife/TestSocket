@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Common", "..\..\..\Libraries\DotNet\CB.Model\CB.Model.Common\CB.Model.Common.csproj", "{33A5DF99-1312-4023-A6EF-EABB9848F5A6}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpListenerWindow", "TcpListenerWindow\TcpListenerWindow.csproj", "{D0065FE5-1866-4ECC-ACC6-23BE8F090906}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClientWindow", "TcpClientWindow\TcpClientWindow.csproj", "{F11A078C-6D6C-42BC-B8EC-3F392D84CB92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Wpf.UserControls", "..\..\..\Libraries\DotNet\CB.WPF\CB.Wpf.UserControls\CB.Wpf.UserControls.csproj", "{8C6499D1-DE3A-4DEB-A7D0-ED930423D24C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F11A078C-6D6C-42BC-B8EC-3F392D84CB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F11A078C-6D6C-42BC-B8EC-3F392D84CB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F11A078C-6D6C-42BC-B8EC-3F392D84CB92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6499D1-DE3A-4DEB-A7D0-ED930423D24C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6499D1-DE3A-4DEB-A7D0-ED930423D24C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6499D1-DE3A-4DEB-A7D0-ED930423D24C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6499D1-DE3A-4DEB-A7D0-ED930423D24C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

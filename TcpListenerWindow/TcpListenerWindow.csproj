@@ -116,6 +116,10 @@
       <Project>{948DFB67-E7DD-4D8E-87C5-033F5A6B83C5}</Project>
       <Name>CB.Net.Socket</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Libraries\DotNet\CB.WPF\CB.Wpf.UserControls\CB.Wpf.UserControls.csproj">
+      <Project>{8c6499d1-de3a-4deb-a7d0-ed930423d24c}</Project>
+      <Name>CB.Wpf.UserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
